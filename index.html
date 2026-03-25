@@ -2155,7 +2155,7 @@ G.bestScore=parseInt(localStorage.getItem(BK)||'0');
 if(G.bestScore>0)document.getElementById('mbest').textContent='BEST: '+G.bestScore.toLocaleString();
 if(localStorage.getItem(SK))document.getElementById('btnCont').style.display='block';
 requestAnimationFrame(loop);
-</script>
+
 const canvas = document.getElementById('c');
 const ctx = canvas.getContext('2d');
 
@@ -2180,5 +2180,7 @@ document.getElementById('btnNew').addEventListener('click', () => {
   document.getElementById('menu').style.display = 'none';
   document.getElementById('gw').style.display = 'flex';
 });
+</script>
+
 </body>
 </html>
