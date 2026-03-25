@@ -2156,26 +2156,41 @@ if(G.bestScore>0)document.getElementById('mbest').textContent='BEST: '+G.bestSco
 if(localStorage.getItem(SK))document.getElementById('btnCont').style.display='block';
 requestAnimationFrame(loop);
 
+const BK = "bestScore";
+const SK = "saveGame";
+
+// INIT
+G.bestScore = parseInt(localStorage.getItem(BK) || '0');
+
+if (G.bestScore > 0) {
+  document.getElementById('mbest').textContent =
+    'BEST: ' + G.bestScore.toLocaleString();
+}
+
+if (localStorage.getItem(SK)) {
+  document.getElementById('btnCont').style.display = 'block';
+}
+
+// Canvas
 const canvas = document.getElementById('c');
 const ctx = canvas.getContext('2d');
 
 canvas.width = CW;
 canvas.height = CH;
 
-// Boucle du jeu
+// Boucle test
 function gameLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // (test simple pour voir si ça marche)
   ctx.fillStyle = "red";
   ctx.fillRect(50, 50, 100, 100);
 
   requestAnimationFrame(gameLoop);
 }
 
-// Lancer le jeu
 gameLoop();
 
+// Bouton
 document.getElementById('btnNew').addEventListener('click', () => {
   document.getElementById('menu').style.display = 'none';
   document.getElementById('gw').style.display = 'flex';
